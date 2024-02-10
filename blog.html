@@ -1,0 +1,601 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Token</title>
+	 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/images/fav.jpg">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, select, textarea, label { 
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      position: absolute;
+      margin: 0;
+      font-size: 50px;
+      color: #fff;
+      z-index: 2;
+      line-height: 83px;
+      }
+      legend {
+      padding: 10px;      
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 18px;
+      color: #fff;
+      background-color: #006622;
+      }
+      textarea {
+      width: calc(100% - 12px);
+      padding: 5px;
+      }
+      .testbox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 20px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 8px #006622; 
+      }
+      .banner::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4); 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      }
+	  form {
+      width: 65%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 30px 0 #8ebf42; 
+      input, select, textarea {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+	  padding:7px 7px 7px 7px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
+      input[type="date"] {
+      padding: 4px 5px;
+      }
+      textarea {
+      width: calc(100% - 12px);
+      padding: 5px;
+      }
+      .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
+      color:  #006622;
+      }
+      .item input:hover, .item select:hover, .item textarea:hover {
+      border: 1px solid transparent;
+      box-shadow: 0 0 3px 0  #006622;
+      color: #006622;
+      }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
+      .item span {
+      color: red;
+      }
+      input[type="date"]::-webkit-inner-spin-button {
+      display: none;
+      }
+      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      font-size: 20px;
+      color: #00b33c;
+      }
+      .item i {
+      right: 1%;
+      top: 30px;
+      z-index: 1;
+      }
+      .week {
+      display:flex;
+      justify-content:space-between;
+      }
+      .columns {
+      display:flex;
+      justify-content:space-between;
+      flex-direction:row;
+      flex-wrap:wrap;
+      }
+      .columns div {
+      width:48%;
+      }
+      [type="date"]::-webkit-calendar-picker-indicator {
+      right: 1%;
+      z-index: 2;
+      opacity: 0;
+      cursor: pointer;
+      }
+      input[type=radio], input[type=checkbox]  {
+      display: none;
+      }
+      label.radio {
+      position: relative;
+      display: inline-block;
+      margin: 5px 20px 15px 0;
+      cursor: pointer;
+      }
+      .question span {
+      margin-left: 30px;
+      }
+      .question-answer label {
+      display: block;
+      }
+      label.radio:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      }
+      input[type=radio]:checked + label:before, label.radio:hover:before {
+      border: 2px solid  #006622;
+      }
+      label.radio:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 5px;
+      width: 8px;
+      height: 4px;
+      border: 3px solid  #006622;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+      opacity: 0;
+      }
+      input[type=radio]:checked + label:after {
+      opacity: 1;
+      }
+      .flax {
+      display:flex;
+      justify-content:space-around;
+      }
+      .btn-block {
+      margin-top: 10px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px; 
+      background:  #4caf50;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background:  #4caf50;
+      }
+      @media (min-width: 568px) {
+      .name-item, .city-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      }
+      .name-item input, .name-item div {
+      width: calc(50% - 20px);
+      }
+      .name-item div input {
+      width:97%;}
+      .name-item div label {
+      display:block;
+      padding-bottom:5px;
+      }
+     
+	         body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #input-text {
+            font-size: 16px;
+            padding: 5px;
+            margin-bottom: 10px;
+			margin-left:3px;
+        }
+
+        #qr-code {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-top: 1px;
+			margin-left:4px;
+            width: 150px; /* Fixed width */
+            height: 150px; /* Fixed height */
+        }
+    </style>
+</head>
+
+    <body>
+        
+         <!-- ################# Header Starts Here#######################--->
+
+    <header class="continer-fluid ">
+        <div  class="header-top">
+            <div class="container">
+                <div class="row col-det">
+                    <div class="col-lg-6 d-none d-lg-block">
+                        <ul class="ulleft">
+                            <li>
+                                <i class="far fa-envelope"></i>
+                                sandipfoundation.org
+                                <span>|</span></li>
+                            <li>
+                                <i class="fas fa-phone-volume"></i>
+                                +91 7499908162</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <ul class="ulright">
+                            <li>
+                                <i class="fab fa-facebook-square"></i>
+                            </li>
+                            <li>
+                                <i class="fab fa-twitter-square"></i>
+                            </li>
+                            <li>
+                                <i class="fab fa-instagram"></i>
+                            </li>
+                            <li>
+                                <i class="fab fa-linkedin"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="menu-jk" class="header-bottom">
+            <div class="container">
+                <div class="row nav-row">
+                    <div class="col-lg-3 col-md-12 logo">
+                        <a href="index.html">
+                            <img src="assets/images/sandiplogo.png" alt="">
+                        </a>
+
+                    </div>
+                    <div class="col-lg-9 col-md-12 nav-col">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+
+                            <button
+                                    class="navbar-toggler"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target="#navbarNav"
+                                    aria-controls="navbarNav"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarNav">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="index.html">Home
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="about_us.html">About Us</a>
+                                    </li>
+                                   
+										 <li class="nav-item">
+                                        <a class="nav-link" href="eventreg.html">Event Register</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="blog.html">Student Token</a>
+										 <li class="nav-item">
+                                        <a class="nav-link" href="complaint.html">Student Complaint</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contact_us.html">Contact US</a>
+                                    </li>
+
+
+
+
+                                </ul>
+                                <a class="nav-btn" href="login.php">
+                                    <button class="btn btn-sm btn-success">Login</button>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+       
+       
+<div class="page-nav no-margin row">
+       <div class="container">
+           <div class="row">
+               <h2>Student Token</h2>
+               <ul>
+                   <li> <a href="#"><i class="fas fa-home"></i> Home</a></li>
+                   <li><i class="fas fa-angle-double-right"></i> Student Token</li>
+               </ul>
+           </div>
+       </div>
+   </div><br><br><br><br>
+   
+   <!--  ************************* Student Token Starts Here ************************** -->
+  
+    <div class="testbox">
+    <form id="myForm" method="POST">
+      <fieldset>
+        
+        <div class="columns">
+          <div class="item">
+            <label for="fname">First Name<span>*</span></label>
+            <input id="fname" type="text" placeholder="E.g. Ajay" name="fname" required/>
+          </div>
+          <div class="item">
+            <label for="lname"> Last Name<span>*</span></label>
+            <input id="lname" type="text" placeholder="E.g. Shinde" name="lname" required/>
+          </div>
+          <div class="item">
+            <label for="address">Student ID<span>*</span></label>
+            <input id="address" type="Number" placeholder="E.g. 4577669"   name="id" required/>
+          </div>
+          <div class="item">
+            <label for="zip">Dept Name<span>*</span></label>
+            <input id="zip" type="text" placeholder="E.g. Information Technology"   name="dep" required/>
+          </div>
+          <div class="item">
+            <label for="city">Class<span>*</span></label>
+            <input id="city" type="text" placeholder="E.g. First Year"  name="class" required/>
+          </div>
+          <div class="item">
+            <label for="state">Mobile Number<span>*</span></label>
+            <input id="state" type="number" placeholder="E.g. +91 7499908162"   name="mobile" required/>
+          </div>
+          <div class="item">
+            <label for="eaddress">Email Address<span>*</span></label>
+            <input id="eaddress" type="text"  placeholder="E.g. shindeajay2903@gmailcom"  name="email" />
+          </div>
+	  <div class="item">
+	  <label for="eaddress">How Many Students are Coming?<span>*</span></label>
+            <input id="eaddress" type="number"  placeholder="E.g. 5"  name="come" required/>
+      
+      </div>       
+      <div class="columns">
+      <div class="item">
+      <label for="checkindate">Check-in Date <span>*</span></label>
+      <input id="checkindate" type="date" name="checkindate" required/>
+      <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="item">
+      <label for="checkoutdate">Check-out Date <span>*</span></label>
+      <input id="checkoutdate" type="date" name="checkoutdate" required/>
+      <i class="fas fa-calendar-alt"></i>
+      </div>
+      <div class="item">
+      <p>Check-in Time </p>
+      <select name="ajay" required>
+      <option value="1" >Select time</option>
+      <option value="Morning" >Morning</option>
+      <option value="Afternoon">Afternoon</option>
+      <option value="Evening">Evening</option>
+      </select>
+      </div>
+      <div class="item">
+      <p>Check-out Time </p>
+      <select name="ajju" required>
+      <option  value="5" disabled selected>Select time</option>
+      <option value="Morning" >Morning</option>
+      <option value="Afternoon">Afternoon</option>
+      <option value="Evening">Evening</option>
+      </select>
+      </div>
+	  <div class="item">
+		   <label for="fname" style="margin-left:2px";>QR For Gate Pass<span>*</span></label>
+		 
+        <input type="text" id="input-text" placeholder="Enter Your Name" name="qr" required>
+        <div id="qr-code"></div>
+	 
+	  </div> 
+      </fieldset>
+      <div class="btn-block">
+      <input type="button" class="btn btn-success" value="Submit" onclick="submitForm()" style ="width:95px";>
+      </div>
+    </form>
+    </div><br><br><br><br><br><br>
+       
+   
+   
+   
+    
+        
+<!--################### Footer Starts Here #######################--->
+       <footer id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 about">
+                <h2>About Us</h2>
+                <p>Sandip Foundation is a private institute/college in Mahiravani, Nasik, Maharashtra, India. Sandip Foundation has three academic divisions Its 250+ acre primary campus is approximately 13 km from Nasik, near Trimbakeshawar. Affiliated to Savitribai Phule Pune University. </p>
+                
+                <div class="foot-address">
+                    <div class="icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="addet">
+                        Sandip foundation
+					Nashik, Maharashtra, IND 
+                    </div>
+                </div>
+                <div class="foot-address">
+                    <div class="icon">
+                        <i class="far fa-envelope-open"></i>
+                    </div>
+                    <div class="addet">
+                        sandipfoundation.info <br>
+                        shindeajay2903@gmail.com
+                    </div>
+                </div>
+                <div class="foot-address">
+                    <div class="icon">
+                         <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="addet">
+                        +91 7499908162 <br>
+                        +91 9145212881
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 fotblog">
+                <h2>From latest Blog Of Sandip Foundation</h2>
+                <div class="blohjb">
+                    <p>Role of Gender Equality in Education for Girls Moreover, girls’ education plays a vital role in fostering gender equality.</p>
+                    <span>22-1-20120</span>
+                </div>
+                <div class="blohjb">
+                    <p> Education provides a platform for challenging societal norms and stereotypes, empowering girls to challenge and overcome gender-based discrimination.</p>
+                    <span>22-1-2022</span>
+                </div>
+                <div class="blohjb">
+                    <p>Role of the Government and Society
+The Government of India is coming with many schemes in favour of the girl’s education like no educational fees.</p>
+                    <span>22-1-2023</span>
+                </div>
+            </div>
+            <div class="col-md-3 glink">
+                 <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-angle-double-right"></i>Home</a></li>
+                    <li><a href="about_us.html"><i class="fas fa-angle-double-right"></i>About Us</a></li>
+                    <li><a href="eventreg.html"><i class="fas fa-angle-double-right"></i>Event Register</a></li>
+                    <li><a href="blog.html"><i class="fas fa-angle-double-right"></i>Student Token</a></li>
+                    <li><a href="complaint.html"><i class="fas fa-angle-double-right"></i>Student Complaint</a></li>
+                    <li><a href="contact_us.html"><i class="fas fa-angle-double-right"></i>Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 tags">
+                <h2>Easy Tags</h2>
+                <ul>
+                    <li>Finance</li>
+                    <li>Web Design</li>
+                    <li>Internet Pro</li>
+                    <li>Node Js</li>
+                    <li>Java Swing</li>
+                    <li>Angular Js</li>
+                    <li>Vue Js</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="copy">
+            <div class="container">
+                <a href="https://www.sandipfoundation.org/">2005 &copy;Sandip Foundation © 2024. All Right Reserved.</a>
+                
+                <span>
+                <a><i class="fab fa-github"></i></a>
+                <a><i class="fab fa-google-plus-g"></i></a>
+                <a><i class="fab fa-pinterest-p"></i></a>
+                <a><i class="fab fa-twitter"></i></a>
+                <a><i class="fab fa-facebook-f"></i></a>
+        </span>
+            </div>
+
+        </div>
+		 <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <script>
+        document.getElementById('input-text').addEventListener('input', function() {
+            generateQRCode(this.value);
+        });
+
+        function generateQRCode(data) {
+            const qrCodeContainer = document.getElementById('qr-code');
+            qrCodeContainer.innerHTML = '';
+
+            if (data.trim() !== '') {
+                const qr = new QRCode(qrCodeContainer, {
+                    text: data,
+                    width: 150, // Fixed width
+                    height: 150 // Fixed height
+                });
+            }
+        }
+    </script>
+<script>
+function submitForm() {
+    var formData = new FormData(document.getElementById("myForm"));
+    fetch("token.php", {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Display success message using SweetAlert
+				swal("Success!", "You Submitting Token!", "success");
+            document.getElementById("myForm").reset();
+        } else {
+            // Display error message using SweetAlert
+            Swal({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error submitting form.',
+            });
+        }
+    })
+    .catch(error => {
+        // Display error message using SweetAlert
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error submitting form.',
+        });
+        console.error('Error:', error);
+    });
+}
+</script>
+        
+    </body>
+
+
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/scroll-fixed/jquery-scrolltofixed-min.js"></script>
+    <script src="assets/plugins/slider/js/owl.carousel.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</html>
